@@ -5,13 +5,15 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "node scripts/gh-pages-deploy.js"
   },
   "dependencies": {
     "@headlessui/vue": "^1.4.2",
     "@heroicons/vue": "^1.0.5",
     "add": "^2.0.6",
     "core-js": "^3.6.5",
+    "execa": "^6.0.0",
     "postcss-loader": "^6.2.0",
     "vue": "^3.0.0",
     "yarn": "^1.22.17"
