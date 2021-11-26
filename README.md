@@ -1,4 +1,4 @@
-# gh-pages-shortener
+# Shortify
 URL shortener using GitHub Pages and Firebase
 
 ## Project setup
