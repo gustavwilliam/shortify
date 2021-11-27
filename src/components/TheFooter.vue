@@ -1,17 +1,7 @@
 <template>
   <footer class="text-gray-300 bg-gray-800 bottom-0">
     <div
-      class="
-        grid
-        gap-8
-        sm:grid-cols-4
-        max-w-2xl
-        mx-auto
-        py-12
-        px-4
-        sm:px-6
-        lg:max-w-7xl lg:px-8
-      "
+      class="grid gap-8 sm:grid-cols-4 max-w-2xl mx-auto py-12 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
     >
       <div>
         <img
