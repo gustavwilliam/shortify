@@ -16,8 +16,11 @@
     "@heroicons/vue": "^1.0.5",
     "add": "^2.0.6",
     "core-js": "^3.6.5",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "execa": "^6.0.0",
     "postcss-loader": "^6.2.0",
+    "prettier": "^2.5.0",
     "vue": "^3.0.0",
     "yarn": "^1.22.17"
   },
@@ -31,7 +34,7 @@
     "@vue/compiler-sfc": "^3.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
     "autoprefixer": "^9",
-    "eslint": "^6.7.2",
+    "eslint": "^7.32.0",
     "eslint-plugin-vue": "^7.0.0",
     "postcss": "^7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
@@ -45,12 +48,16 @@
     "extends": [
       "plugin:vue/vue3-essential",
       "eslint:recommended",
+      "plugin:prettier/recommended",
       "@vue/typescript/recommended"
     ],
+    "plugins": ["prettier"],
     "parserOptions": {
       "ecmaVersion": 2020
     },
-    "rules": {}
+    "rules": {
+      "prettier/prettier": "error"
+    }
   },
   "browserslist": [
     "> 1%",
