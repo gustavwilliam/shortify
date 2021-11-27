@@ -32,12 +32,12 @@
           <a href="/" class="flex-shrink-0 flex items-center">
             <img
               class="block lg:hidden h-8 w-auto"
-              src="@/assets/shortify-logo.png"
+              src="@/assets/logo/logo-dark-white-text.svg"
               alt="Link shortener"
             />
             <img
               class="hidden lg:block h-8 w-auto"
-              src="@/assets/shortify-logo.png"
+              src="@/assets/logo/logo-dark-white-text.svg"
               alt="Link shortener"
             />
           </a>
