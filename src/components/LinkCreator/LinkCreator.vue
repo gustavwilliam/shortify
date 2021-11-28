@@ -18,6 +18,7 @@
           title="Shortened URL"
           placeholder="short-link"
           prefixText="s.godi.se/"
+          validationPattern="^[A-Za-z0-9_-]+$"
           :errorMessage="errorMsgShortUrl"
           v-model="shortURL"
         />

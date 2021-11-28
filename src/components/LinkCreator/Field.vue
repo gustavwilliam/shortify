@@ -22,6 +22,7 @@
         :value="modelValue"
         class="focus:ring-blue-twitter focus:border-blue-twitter flex-1 block w-full sm:text-sm border-gray-300 invalid:border-red-400"
         :class="prefixText ? 'rounded-r-md' : 'rounded-md'"
+        :pattern="validationPattern"
         :placeholder="placeholder"
       />
     </div>
@@ -51,6 +52,10 @@ export default defineComponent({
       type: String,
       required: false,
       default: "text",
+    },
+    validationPattern: {
+      type: RegExp,
+      required: false,
     },
     errorMessage: {
       type: String,
