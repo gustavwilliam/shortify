@@ -16,7 +16,10 @@
       class="max-w-2xl mx-auto py-12 px-4 sm:py-20 sm:px-6 lg:max-w-7xl lg:px-8"
     >
       <LinkCreator v-show="path === '' || path === '/' || path === '/#'" />
-      <ListItems v-show="path === '/#list'" :items="items" />
+      <ListItems
+        v-show="path === '/#list' || path === '#list'"
+        :items="items"
+      />
     </div>
   </div>
   <TheFooter />
