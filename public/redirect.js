@@ -32,4 +32,4 @@ async function redirect() {
   window.location.replace(destination);
 }
 
-await redirect();
+redirect();
