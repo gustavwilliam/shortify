@@ -17,6 +17,8 @@
         :type="inputType"
         name="input-field"
         id="input-field"
+        @input="$emit('update:modelValue', $event.target.value)"
+        :value="modelValue"
         class="focus:ring-blue-twitter focus:border-blue-twitter flex-1 block w-full sm:text-sm border-gray-300"
         :class="prefixText ? 'rounded-r-md' : 'rounded-md'"
         :placeholder="placeholder"
@@ -48,6 +50,9 @@ export default defineComponent({
       required: false,
       default: "text",
     },
+    modelValue: {},
   },
+
+  emits: ["update:modelValue"],
 });
 </script>
