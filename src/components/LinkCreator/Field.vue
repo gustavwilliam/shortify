@@ -24,6 +24,7 @@
         :placeholder="placeholder"
       />
     </div>
+    <p class="text-red-500 text-sm ml-1 mt-1">{{ errorMessage }}</p>
   </div>
 </template>
 
@@ -49,6 +50,10 @@ export default defineComponent({
       type: String,
       required: false,
       default: "text",
+    },
+    errorMessage: {
+      type: String,
+      required: true,
     },
     modelValue: {},
   },

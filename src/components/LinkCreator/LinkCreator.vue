@@ -11,12 +11,14 @@
           title="Full URL"
           placeholder="https://google.com/page"
           inputType="url"
+          :errorMessage="errorMsgFullUrl"
           v-model="fullURL"
         />
         <Field
           title="Shortened URL"
           placeholder="short-link"
           prefixText="s.godi.se/"
+          :errorMessage="errorMsgShortUrl"
           v-model="shortURL"
         />
       </div>
@@ -46,6 +48,8 @@ export default defineComponent({
     return {
       fullURL: "",
       shortURL: "",
+      errorMsgFullUrl: "",
+      errorMsgShortUrl: "",
     };
   },
 
@@ -59,10 +63,13 @@ export default defineComponent({
       }
     },
     async addData(): Promise<void> {
-      if (
-        this.isValidURL(this.shortURL) ||
-        /^[A-Za-z0-9_-]+$/.test(this.shortURL)
-      ) {
+      if (!this.isValidURL(this.fullURL)) {
+        this.errorMsgFullUrl =
+          "Please enter a valid URL. Include the 'https://'-part";
+      } else if (!/^[A-Za-z0-9_-]+$/.test(this.shortURL)) {
+        console.log("ShortURL fail");
+        this.errorMsgShortUrl = "Please use only a-z, A-Z, - and _.";
+      } else {
         try {
           await setDoc(doc(database, "urls", this.shortURL), {
             short: this.shortURL,
@@ -71,9 +78,16 @@ export default defineComponent({
         } catch (e) {
           console.error("Error adding document: ", e);
         }
-      } else {
-        return;
       }
+    },
+  },
+
+  watch: {
+    fullURL: function () {
+      this.errorMsgFullUrl = "";
+    },
+    shortURL: function () {
+      this.errorMsgShortUrl = "";
     },
   },
 });
