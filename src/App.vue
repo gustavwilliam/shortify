@@ -18,6 +18,7 @@
   <div>
     <div
       class="max-w-2xl mx-auto py-12 px-4 sm:py-20 sm:px-6 lg:max-w-7xl lg:px-8"
+      v-show="pageFound"
     >
       <LinkCreator v-show="isPathActive('/')" />
       <ListItems v-show="isPathActive('/list')" :items="items" />
@@ -57,6 +58,16 @@ export default defineComponent({
     };
   },
 
+  computed: {
+    pageFound(): boolean {
+      const mapped = Object.keys(paths).map((testPath) => {
+        return paths[testPath].indexOf(this.path) != -1;
+      });
+      console.log(mapped);
+      return mapped.some(Boolean);
+    },
+  },
+
   methods: {
     async getItems() {
       const querySnapshot = await getDocs(collection(database, "urls"));
@@ -68,13 +79,11 @@ export default defineComponent({
       });
     },
     isPathActive(testPath: string): boolean {
-      console.log("Testint");
       return paths[testPath].indexOf(this.path) != -1;
     },
   },
 
   async created() {
-    // console.log(await this.getItems());
     this.items = await this.getItems();
   },
 });
