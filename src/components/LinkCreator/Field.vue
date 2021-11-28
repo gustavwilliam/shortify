@@ -16,6 +16,7 @@
       <input
         :type="inputType"
         name="input-field"
+        autocomplete="off"
         id="input-field"
         @input="$emit('update:modelValue', $event.target.value)"
         :value="modelValue"
