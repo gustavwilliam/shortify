@@ -29,10 +29,8 @@ import TheFooter from "@/components/TheFooter.vue";
 import LinkCreator from "@/components/LinkCreator/LinkCreator.vue";
 import ListItems from "@/components/ListItems/ListItems.vue";
 
-const items = [
-  { short: "Testing", long: "Some testing" },
-  { short: "Testing 2", long: "Some more testing" },
-];
+import { collection, getDocs } from "firebase/firestore";
+import { database } from "@/scripts/firebase";
 
 export default defineComponent({
   name: "App",
@@ -40,8 +38,25 @@ export default defineComponent({
   data() {
     return {
       path: window.location.hash,
-      items: items,
+      items: [{ short: "", long: "" }],
     };
+  },
+
+  methods: {
+    async getItems() {
+      const querySnapshot = await getDocs(collection(database, "urls"));
+      return querySnapshot.docs.map((doc) => {
+        return {
+          short: doc.get("short"),
+          long: doc.get("long"),
+        };
+      });
+    },
+  },
+
+  async created() {
+    // console.log(await this.getItems());
+    this.items = await this.getItems();
   },
 });
 </script>
