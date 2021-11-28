@@ -22,6 +22,9 @@ module.exports = {
   },
   variants: {
     borderColor: ({ after }) => after(["invalid"]),
+    extend: {
+      backgroundColor: ["odd", "even"],
+    },
   },
   plugins: [
     require("@tailwindcss/forms"),

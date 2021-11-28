@@ -1,7 +1,11 @@
 <template>
   <TheNavbar
     :navigation="[
-      { name: 'Add new', href: '/', current: path === '' || path === '/' },
+      {
+        name: 'Add new',
+        href: '/#',
+        current: path === '' || path === '/' || path === '/#',
+      },
       { name: 'List', href: '/#list', current: path === '/#list' },
       { name: 'GitHub', href: 'https://gh.godi.se/shortify', current: false },
     ]"
@@ -11,8 +15,8 @@
     <div
       class="max-w-2xl mx-auto py-12 px-4 sm:py-20 sm:px-6 lg:max-w-7xl lg:px-8"
     >
-      <LinkCreator v-show="path === '' || path === '/'" />
-      <h1 v-show="path === '/#list'">List</h1>
+      <LinkCreator v-show="path === '' || path === '/' || path === '/#'" />
+      <ListItems v-show="path === '/#list'" :items="items" />
     </div>
   </div>
   <TheFooter />
@@ -23,13 +27,20 @@ import { defineComponent } from "vue";
 import TheNavbar from "@/components/TheNavbar.vue";
 import TheFooter from "@/components/TheFooter.vue";
 import LinkCreator from "@/components/LinkCreator/LinkCreator.vue";
+import ListItems from "@/components/ListItems/ListItems.vue";
+
+const items = [
+  { short: "Testing", long: "Some testing" },
+  { short: "Testing 2", long: "Some more testing" },
+];
 
 export default defineComponent({
   name: "App",
-  components: { TheNavbar, TheFooter, LinkCreator },
+  components: { TheNavbar, TheFooter, LinkCreator, ListItems },
   data() {
     return {
       path: window.location.hash,
+      items: items,
     };
   },
 });
