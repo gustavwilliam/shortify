@@ -19,7 +19,7 @@
         id="input-field"
         @input="$emit('update:modelValue', $event.target.value)"
         :value="modelValue"
-        class="focus:ring-blue-twitter focus:border-blue-twitter flex-1 block w-full sm:text-sm border-gray-300"
+        class="focus:ring-blue-twitter focus:border-blue-twitter flex-1 block w-full sm:text-sm border-gray-300 invalid:border-red-400"
         :class="prefixText ? 'rounded-r-md' : 'rounded-md'"
         :placeholder="placeholder"
       />
