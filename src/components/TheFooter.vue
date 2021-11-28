@@ -11,14 +11,13 @@
         />
       </div>
       <div class="text-sm col-span-2">
-        Free, open source link shortener! Thanks to
+        Free, open source link shortener! Made by
         <a
           href="https://github.com/gustavwilliam/"
           target="_blank"
           class="underline hover:text-gray-50"
           >Gustav Odinger</a
-        >
-        for creating this site.
+        >.
       </div>
       <div class="flex flex-col items-start sm:items-end max-w-screen-xl">
         <div class="flex items-center space-x-2">
