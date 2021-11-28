@@ -4,9 +4,13 @@
       {
         name: 'Add new',
         href: '/#',
-        current: path === '' || path === '/' || path === '/#',
+        current: isPathActive('/'),
       },
-      { name: 'List', href: '/#list', current: path === '/#list' },
+      {
+        name: 'List',
+        href: '/#list',
+        current: isPathActive('/list'),
+      },
       { name: 'GitHub', href: 'https://gh.godi.se/shortify', current: false },
     ]"
     @navigate="path = $event"
@@ -15,11 +19,8 @@
     <div
       class="max-w-2xl mx-auto py-12 px-4 sm:py-20 sm:px-6 lg:max-w-7xl lg:px-8"
     >
-      <LinkCreator v-show="path === '' || path === '/' || path === '/#'" />
-      <ListItems
-        v-show="path === '/#list' || path === '#list'"
-        :items="items"
-      />
+      <LinkCreator v-show="isPathActive('/')" />
+      <ListItems v-show="isPathActive('/list')" :items="items" />
     </div>
   </div>
   <TheFooter />
@@ -35,6 +36,11 @@ import ListItems from "@/components/ListItems/ListItems.vue";
 import { collection, getDocs } from "firebase/firestore";
 import { database } from "@/scripts/firebase";
 
+const paths: Record<string, Array<string>> = {
+  "/": ["", "/", "/#"],
+  "/list": ["/#list", "#list"],
+};
+
 export default defineComponent({
   name: "App",
   components: { TheNavbar, TheFooter, LinkCreator, ListItems },
@@ -42,6 +48,12 @@ export default defineComponent({
     return {
       path: window.location.hash,
       items: [{ short: "", long: "" }],
+    };
+  },
+
+  setup() {
+    return {
+      paths,
     };
   },
 
@@ -54,6 +66,10 @@ export default defineComponent({
           long: doc.get("long"),
         };
       });
+    },
+    isPathActive(testPath: string): boolean {
+      console.log("Testint");
+      return paths[testPath].indexOf(this.path) != -1;
     },
   },
 
