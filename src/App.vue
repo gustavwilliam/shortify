@@ -1,7 +1,7 @@
 <template>
   <TheNavbar
     :navigation="[
-      { name: 'Home', href: '/', current: path === '' || path === '/' },
+      { name: 'Add new', href: '/', current: path === '' || path === '/' },
       { name: 'List', href: '/#list', current: path === '/#list' },
       { name: 'GitHub', href: 'https://gh.godi.se/shortify', current: false },
     ]"
