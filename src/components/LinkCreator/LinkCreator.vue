@@ -50,14 +50,29 @@ export default defineComponent({
   },
 
   methods: {
-    async addData(): Promise<void> {
+    isValidURL(link: string): boolean {
       try {
-        await setDoc(doc(database, "urls", this.shortURL), {
-          short: this.shortURL,
-          long: this.fullURL,
-        });
-      } catch (e) {
-        console.error("Error adding document: ", e);
+        let url = new URL(link);
+        return url.protocol === "http:" || url.protocol === "https:";
+      } catch (_) {
+        return false;
+      }
+    },
+    async addData(): Promise<void> {
+      if (
+        this.isValidURL(this.shortURL) ||
+        /^[A-Za-z0-9_-]+$/.test(this.shortURL)
+      ) {
+        try {
+          await setDoc(doc(database, "urls", this.shortURL), {
+            short: this.shortURL,
+            long: this.fullURL,
+          });
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+      } else {
+        return;
       }
     },
   },
