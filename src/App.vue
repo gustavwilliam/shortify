@@ -1,15 +1,18 @@
 <template>
   <TheNavbar
     :navigation="[
-      { name: 'Home', href: '/', current: true },
+      { name: 'Home', href: '/', current: path === '' || path === '/' },
+      { name: 'List', href: '/#list', current: path === '/#list' },
       { name: 'GitHub', href: 'https://gh.godi.se/shortify', current: false },
     ]"
+    @navigate="path = $event"
   />
   <div>
     <div
       class="max-w-2xl mx-auto py-12 px-4 sm:py-20 sm:px-6 lg:max-w-7xl lg:px-8"
     >
-      <LinkCreator />
+      <LinkCreator v-show="path === '' || path === '/'" />
+      <h1 v-show="path === '/#list'">List</h1>
     </div>
   </div>
   <TheFooter />
@@ -24,5 +27,10 @@ import LinkCreator from "@/components/LinkCreator/LinkCreator.vue";
 export default defineComponent({
   name: "App",
   components: { TheNavbar, TheFooter, LinkCreator },
+  data() {
+    return {
+      path: window.location.hash,
+    };
+  },
 });
 </script>

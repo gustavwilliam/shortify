@@ -33,6 +33,7 @@
                 v-for="item in navigation"
                 :key="item.name"
                 :href="item.href"
+                @click="$emit('navigate', item.href)"
                 :class="[
                   item.current
                     ? 'bg-gray-900 text-white'
@@ -58,6 +59,7 @@
           :key="item.name"
           as="a"
           :href="item.href"
+          @click="$emit('navigate', item.href)"
           :class="[
             item.current
               ? 'bg-gray-900 text-white'
@@ -98,5 +100,7 @@ export default defineComponent({
       },
     },
   },
+
+  emits: ["navigate"],
 });
 </script>
