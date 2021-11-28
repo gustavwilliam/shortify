@@ -31,6 +31,9 @@
       >
         Save
       </button>
+      <p class="text-sm text-green-600 mt-2" v-show="showSuccessMsg">
+        Successfully saved.
+      </p>
     </div>
   </div>
 </template>
@@ -50,6 +53,7 @@ export default defineComponent({
       shortURL: "",
       errorMsgFullUrl: "",
       errorMsgShortUrl: "",
+      showSuccessMsg: false,
     };
   },
 
@@ -75,6 +79,9 @@ export default defineComponent({
             short: this.shortURL,
             long: this.fullURL,
           });
+          this.fullURL = "";
+          this.shortURL = "";
+          this.showSuccessMsg = true;
         } catch (e) {
           console.error("Error adding document: ", e);
         }
@@ -85,9 +92,15 @@ export default defineComponent({
   watch: {
     fullURL: function () {
       this.errorMsgFullUrl = "";
+      if (this.fullURL !== "") {
+        this.showSuccessMsg = false;
+      }
     },
     shortURL: function () {
       this.errorMsgShortUrl = "";
+      if (this.shortURL !== "") {
+        this.showSuccessMsg = false;
+      }
     },
   },
 });
