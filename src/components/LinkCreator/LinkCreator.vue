@@ -9,7 +9,7 @@
       <div class="grid md:grid-cols-2 gap-5">
         <Field
           title="Full URL"
-          placeholder="https://google.com/page"
+          placeholder="https://example.com/page"
           inputType="url"
           :errorMessage="errorMsgFullUrl"
           v-model="fullURL"
