@@ -4,7 +4,7 @@ const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "media",
   theme: {
     extend: {
       fontFamily: {
@@ -16,6 +16,9 @@ module.exports = {
             DEFAULT: "#1DA1F2",
             dark: "#0d8ddb",
           },
+        },
+        gray: {
+          750: "#262f3d",
         },
       },
     },

@@ -1,8 +1,8 @@
 <template>
   <div class="shadow rounded-lg overflow-hidden">
-    <div class="bg-white px-6 py-5">
+    <div class="bg-white dark:bg-gray-800 px-6 py-5">
       <h1
-        class="mb-5 leading-8 font-bold tracking-tight text-gray-900 text-2xl"
+        class="mb-5 leading-8 font-bold tracking-tight text-gray-900 dark:text-gray-100 text-2xl"
       >
         Shorten a URL
       </h1>
@@ -24,7 +24,7 @@
         />
       </div>
     </div>
-    <div class="px-6 py-5 bg-gray-50 text-left">
+    <div class="px-6 py-5 bg-gray-50 dark:bg-gray-750 text-left">
       <button
         type="submit"
         class="inline-flex justify-center py-2 px-4 w-full sm:w-auto border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-twitter hover:bg-blue-twitter-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-twitter"
