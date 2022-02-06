@@ -8,7 +8,7 @@
     <dd
       class="mt-1 text-sm text-gray-900 dark:text-gray-50 sm:mt-0 sm:col-span-2"
     >
-      {{ long }}
+      <a :href="long" target="_blank" class="hover:underline">{{ long }}</a>
     </dd>
   </div>
 </template>
