@@ -1,3 +1,6 @@
+> **Note**
+> The live version at https://s.godi.se/ is down for the foreseeable future, due to some misuse of the service.
+
 # Shortify
 URL shortener using GitHub Pages and Firebase
 
